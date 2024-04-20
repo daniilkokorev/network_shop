@@ -7,6 +7,9 @@ NULLABLE = {"blank": True, "null": True}
 
 
 class Category(models.Model):
+    """
+    Класс для моделей категории продуктов
+    """
     name_category = models.CharField(
         max_length=150, verbose_name="Наименование категории"
     )
@@ -21,6 +24,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    Класс для моделей продуктов
+    """
     name_product = models.CharField(
         max_length=150,
         verbose_name="Наименование продукта",
