@@ -1,0 +1,62 @@
+[
+    {
+        "model": "catalog.category",
+        "pk": 4,
+        "fields": {
+            "name_category": "авто",
+            "description_category": "автотранспортное средство",
+        },
+    },
+    {
+        "model": "catalog.category",
+        "pk": 5,
+        "fields": {"name_category": "еда", "description_category": "продукты питания"},
+    },
+    {
+        "model": "catalog.category",
+        "pk": 6,
+        "fields": {
+            "name_category": "интерьер",
+            "description_category": "вещи для обустройства дома",
+        },
+    },
+    {
+        "model": "catalog.product",
+        "pk": 14,
+        "fields": {
+            "name_product": "стол",
+            "description_product": "мебель для кухни",
+            "picture_product": "",
+            "category_product": 6,
+            "price_long": 2000,
+            "created_at": null,
+            "updated_at": null,
+        },
+    },
+    {
+        "model": "catalog.product",
+        "pk": 15,
+        "fields": {
+            "name_product": "яблоко",
+            "description_product": "очень вкусный фрукт",
+            "picture_product": "",
+            "category_product": 5,
+            "price_long": 50,
+            "created_at": null,
+            "updated_at": null,
+        },
+    },
+    {
+        "model": "catalog.product",
+        "pk": 16,
+        "fields": {
+            "name_product": "Лада",
+            "description_product": "отечественный автопром",
+            "picture_product": "",
+            "category_product": 4,
+            "price_long": 250000,
+            "created_at": null,
+            "updated_at": null,
+        },
+    },
+]
