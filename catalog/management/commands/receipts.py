@@ -7,8 +7,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         product_list = [
-            {'name_product': 'Насос', 'description_product': 'УНБ-600'},
-            {'name_product': 'ФЗ', 'description_product': 'Фрез торцевой'}
+            {"name_product": "Насос", "description_product": "УНБ-600"},
+            {"name_product": "ФЗ", "description_product": "Фрез торцевой"},
         ]
 
         # for i in product_list:

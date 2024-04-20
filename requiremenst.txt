@@ -5,3 +5,4 @@ typing_extensions==4.11.0
 pillow
 ipython
 psycopg2
+black
