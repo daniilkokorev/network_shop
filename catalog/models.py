@@ -39,19 +39,27 @@ class Product(models.Model):
         "Category",
         on_delete=models.SET_NULL,
         verbose_name="Категория продукта",
-        help_text="Введите категорию продукта", **NULLABLE,
-        related_name="products")
+        help_text="Введите категорию продукта",
+        **NULLABLE,
+        related_name="products"
+    )
     price_long = models.IntegerField(
         verbose_name="Цена продукта", help_text="Введите цену за продукт", **NULLABLE
     )
     created_at = models.DateField(
-        verbose_name="Дата создания", help_text="Введите дату загрузки продукта",
+        verbose_name="Дата создания",
+        help_text="Введите дату загрузки продукта",
         **NULLABLE
     )
     updated_at = models.DateField(
         verbose_name="Дата последнего изменения",
         **NULLABLE,
         help_text="Введите дату последнего изменения"
+    )
+    manufactured_at = models.DateField(
+        verbose_name="Дата производства продукта",
+        help_text="Введите дата производства продукта",
+        **NULLABLE
     )
 
     def __str__(self):
