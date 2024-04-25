@@ -10,13 +10,13 @@ class Category(models.Model):
     """
     Класс для моделей категории продуктов
     """
-    name_category = models.CharField(
+    name = models.CharField(
         max_length=150, verbose_name="Наименование категории"
     )
-    description_category = models.TextField(verbose_name="Описание категории")
+    description = models.TextField(verbose_name="Описание категории")
 
     def __str__(self):
-        return self.name_category
+        return self.name
 
     class Meta:
         verbose_name = "категория"
@@ -27,21 +27,21 @@ class Product(models.Model):
     """
     Класс для моделей продуктов
     """
-    name_product = models.CharField(
+    name = models.CharField(
         max_length=150,
         verbose_name="Наименование продукта",
         help_text="Введите название продукта",
     )
-    description_product = models.TextField(
+    description = models.TextField(
         verbose_name="Описание продукта", help_text="Введите описание продукта"
     )
-    picture_product = models.ImageField(
+    picture = models.ImageField(
         upload_to="catalog/media",
         verbose_name="Изображение продукта",
         **NULLABLE,
         help_text="Загрузите изображение продукта"
     )
-    category_product = models.ForeignKey(
+    category = models.ForeignKey(
         "Category",
         on_delete=models.SET_NULL,
         verbose_name="Категория продукта",
@@ -64,9 +64,9 @@ class Product(models.Model):
     )
 
     def __str__(self):
-        return self.name_product
+        return self.name
 
     class Meta:
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
-        ordering = ["name_product", "category_product"]
+        ordering = ["name", "category"]
