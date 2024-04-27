@@ -9,12 +9,12 @@ class Command(BaseCommand):
 
     @staticmethod
     def json_read_categories():
-        with open('category_data.json') as file:
+        with open('fixtures/category.json') as file:
             return json.load(file)
 
     @staticmethod
     def json_read_products():
-        with open('product_data.json') as f:
+        with open('fixtures/product.json') as f:
             return json.load(f)
 
     def handle(self, *args, **options):

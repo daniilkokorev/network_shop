@@ -11,11 +11,11 @@ from catalog.models import Product, Category
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', "name_product", 'description_product', "price_long", "category_product",)
-    list_filter = ("category_product",)
-    search_fields = ("name_product", 'description_product')
+    list_display = ('id', "name", 'description', "price_long", "category",)
+    list_filter = ("category",)
+    search_fields = ("name", 'description')
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name_category', 'description_category')
+    list_display = ('id', 'name', 'description')

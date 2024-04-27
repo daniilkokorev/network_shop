@@ -1,0 +1,17 @@
+[
+    {
+        "model": "catalog.category",
+        "pk": 1,
+        "fields": {"name": "еда", "description": "продукты питания"}
+    },
+    {
+        "model": "catalog.category",
+        "pk": 2,
+        "fields": {"name": "авто", "description": "автотранспортное средство"}
+    },
+    {
+        "model": "catalog.category",
+        "pk": 3,
+        "fields": {"name": "интерьер", "description": "вещи для обустройства дома"}
+    }
+]
