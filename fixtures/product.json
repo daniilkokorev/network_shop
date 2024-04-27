@@ -1,0 +1,41 @@
+[
+    {
+        "model": "catalog.product",
+        "pk": 1,
+        "fields": {
+            "name": "яблоко",
+            "description": "очень вкусный фрукт",
+            "picture": "catalog/media/яблоко.jpg",
+            "category": 1,
+            "price_long": 50,
+            "created_at": "2024-04-23",
+            "updated_at": "2024-04-23"
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 2,
+        "fields": {
+            "name": "Лада",
+            "description": "отечественный автомобиль",
+            "picture": "catalog/media/лада.jpg",
+            "category": 2,
+            "price_long": 250000,
+            "created_at": "2024-04-23",
+            "updated_at": "2024-04-23"
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 3,
+        "fields": {
+            "name": "стол",
+            "description": "мебель для кухни",
+            "picture": "catalog/media/стол.jpg",
+            "category": 3,
+            "price_long": 5000,
+            "created_at": "2024-04-23",
+            "updated_at": "2024-04-23"
+        }
+    }
+]
