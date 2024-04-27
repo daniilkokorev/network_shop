@@ -4,21 +4,25 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {% for item in products %}
         <div class="col">
           <div class="card shadow-sm">
             <img class="card-img-top" src="{{ item.picture | picture_filter }}">
             <div class="card-body">
               <p class="card-text">{{ item.name }}</p>
+              <p class="card-text">Описание: {{ item.description }}</p>
+              <p class="card-text">Категория: {{ item.category }}</p>
+              <p class="card-text">Дата создания: {{ item.created_at }}</p>
+              <p class="card-text">Дата последнего изменения: {{ item.updated_at }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-primary" href="{% url 'catalogs:product_info' item.pk %}" role="button">Описание</a>
+                  <a class="ms-2 btn btn-primary" href="{% url 'catalogs:products_list' %}" role="button">Назад</a>
+                  <a class="ms-2 btn btn-primary" href="#" role="button">Купить</a>
                 </div>
+                <small class="text-body-secondary">Цена: {{ item.price_long }}</small>
               </div>
             </div>
           </div>
         </div>
-          {% endfor %}
       </div>
     </div>
 </div>
