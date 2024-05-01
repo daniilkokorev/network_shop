@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 from catalog.models import Product
 
@@ -9,7 +10,7 @@ from catalog.models import Product
 
 
 class ProductListView(ListView):
-    """CBV класс-контроллер"""
+    """CBV класс-контроллер отображающий список продуктов"""
     model = Product
 
 
@@ -21,7 +22,7 @@ class ProductListView(ListView):
 
 
 class ContactView(TemplateView):
-    """CBV класс-контроллер"""
+    """CBV класс-контроллер контактов"""
     template_name = "catalog/contact.html"
 
     def post_request(self, request, *args, **kwargs):
@@ -43,7 +44,7 @@ class ContactView(TemplateView):
 
 
 class ProductDetailView(DetailView):
-    """CBV класс-контроллер"""
+    """CBV класс-контроллер отображающий информацию о продукте"""
     model = Product
 
 # def product_info(request, pk):
@@ -51,3 +52,10 @@ class ProductDetailView(DetailView):
 #     product = get_object_or_404(Product, pk=pk)
 #     context = {"item": product}
 #     return render(request, "catalog/product_detail.html", context)
+
+
+class ProductCreateView(CreateView):
+    """контроллер добавления продукта"""
+    model = Product
+    fields = ("name", "description", "picture", "category", "price_long")
+    success_url = reverse_lazy("catalog:products_list")
