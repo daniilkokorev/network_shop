@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
 from catalog.models import Product
 
@@ -67,3 +67,8 @@ class ProductUpdateView(UpdateView):
     fields = ("name", "description", "picture", "category", "price_long", "updated_at")
     success_url = reverse_lazy("catalog:products_list")
 
+
+class ProductDeleteView(DeleteView):
+    """контроллер удаления продукта"""
+    model = Product
+    success_url = reverse_lazy("catalog:products_list")

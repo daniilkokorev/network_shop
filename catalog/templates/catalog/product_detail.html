@@ -11,6 +11,7 @@
               <p class="card-text">{{ object.name }}</p>
               <p class="card-text">Описание: {{ object.description }}</p>
               <p class="card-text">Категория: {{ object.category }}</p>
+               <p class="card-text">Цена: {{ object.price_long }} р.</p>
               <p class="card-text">Дата создания: {{ object.created_at }}</p>
               <p class="card-text">Дата последнего изменения: {{ object.updated_at }}</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -18,10 +19,9 @@
                   <a class="ms-2 btn btn-primary" href="{% url 'catalogs:products_list' %}" role="button">Назад</a>
                   <a class="ms-2 btn btn-primary"
                      href="{% url 'catalogs:update_product' object.pk %}" role="button">Изменить</a>
-                  <a class="ms-2 btn btn-primary" href="#" role="button">Купить</a>
-                </div>
-                <small class="text-body-secondary">Цена: {{ object.price_long }}</small>
-              </div>
+                  <a class="ms-2 btn btn-primary"
+                     href="{% url 'catalogs:delete_product' object.pk %}" role="button">Удалить</a>
+                  <a class="ms-2 btn btn-success" href="#" role="button">Купить</a>
             </div>
           </div>
         </div>
