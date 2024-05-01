@@ -16,6 +16,8 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a class="ms-2 btn btn-primary" href="{% url 'catalogs:products_list' %}" role="button">Назад</a>
+                  <a class="ms-2 btn btn-primary"
+                     href="{% url 'catalogs:update_product' object.pk %}" role="button">Изменить</a>
                   <a class="ms-2 btn btn-primary" href="#" role="button">Купить</a>
                 </div>
                 <small class="text-body-secondary">Цена: {{ object.price_long }}</small>

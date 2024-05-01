@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
 from catalog.models import Product
 
@@ -59,3 +59,11 @@ class ProductCreateView(CreateView):
     model = Product
     fields = ("name", "description", "picture", "category", "price_long")
     success_url = reverse_lazy("catalog:products_list")
+
+
+class ProductUpdateView(UpdateView):
+    """контроллер редактирования продукта"""
+    model = Product
+    fields = ("name", "description", "picture", "category", "price_long", "updated_at")
+    success_url = reverse_lazy("catalog:products_list")
+
