@@ -6,3 +6,4 @@ pillow
 ipython
 psycopg2
 black
+pytils

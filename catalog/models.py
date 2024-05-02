@@ -55,6 +55,7 @@ class Product(models.Model):
     created_at = models.DateField(
         verbose_name="Дата создания",
         help_text="Введите дату загрузки продукта",
+        auto_now_add=True,
         **NULLABLE
     )
     updated_at = models.DateField(
@@ -62,6 +63,15 @@ class Product(models.Model):
         **NULLABLE,
         help_text="Введите дату последнего изменения"
     )
+    is_available = models.BooleanField(
+        default=True,
+        verbose_name="Доступен",
+        help_text="Укажите, доступен ли продукт",
+    )
+
+    view_count = models.IntegerField(default=0, verbose_name="Количество просмотров")
+    is_published = models.BooleanField(default=True, verbose_name="Опубликован")
+    slug = models.CharField(max_length=150, verbose_name="slug", **NULLABLE)
 
     def __str__(self):
         return self.name
