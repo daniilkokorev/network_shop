@@ -8,7 +8,6 @@
           <div class="card shadow-sm">
             <img class="card-img-top" src="{{ object.picture | picture_filter }}">
             <div class="card-body">
-              <p class="card-text">({{ object.slug }})</p>
               <p class="card-text">{{ object.name }}</p>
               <p class="card-text">Описание: {{ object.description }}</p>
               <p class="card-text">Категория: {{ object.category }}</p>
@@ -25,16 +24,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a class="ms-2 btn btn-primary" href="{% url 'catalogs:products_list' %}" role="button">Назад</a>
-                  <a class="ms-2 btn btn-primary"
-                     href="{% url 'catalogs:update_product' object.pk %}" role="button">Изменить</a>
-                  <a class="ms-2 btn btn-primary"
-                     href="{% url 'catalogs:delete_product' object.pk %}" role="button">Удалить</a>
                   <a class="ms-2 btn btn-success" href="#" role="button">Купить</a>
                 </div>
               </div>
-            </div>
-            <div class="card-footer">
-              Просмотры: {{ object.view_count }}
             </div>
           </div>
         </div>
