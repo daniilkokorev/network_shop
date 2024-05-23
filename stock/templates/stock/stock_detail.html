@@ -6,7 +6,9 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ object.preview | picture_filter }}">
+            {% if object.preview %}
+                <img class="card-img-top" src="{{ object.preview | picture_filter }}">
+            {% endif %}
             <div class="card-body">
               <p class="card-text">({{ object.slug }})</p>
               <p class="card-text">{{ object.name }}</p>

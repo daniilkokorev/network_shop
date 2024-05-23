@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-from django.views.generic import ListView, DetailView, TemplateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
-
+from catalog.forms import ProductForm
 from catalog.models import Product
 
 
@@ -54,6 +54,28 @@ class ProductDetailView(DetailView):
 #     product = get_object_or_404(Product, pk=pk)
 #     context = {"item": product}
 #     return render(request, "catalog/product_detail.html", context)
+
+class ProductCreateView(CreateView):
+    """контроллер добавления продукта"""
+    form_class = ProductForm
+    model = Product
+    success_url = reverse_lazy("catalog:products_list")
+
+
+class ProductUpdateView(UpdateView):
+    """контроллер редактирования продукта"""
+    form_class = ProductForm
+    model = Product
+
+    def get_success_url(self):
+        """ метод переопределяет запрос к url"""
+        return reverse("catalog:product_info", kwargs={"pk": self.object.pk})
+
+
+class ProductDeleteView(DeleteView):
+    """контроллер удаления продукта"""
+    model = Product
+    success_url = reverse_lazy("catalog:products_list")
 
 
 def toggle_activity(request, pk):
