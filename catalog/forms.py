@@ -1,7 +1,7 @@
 from django.forms import ModelForm, ValidationError
 from django.forms.fields import BooleanField
 
-from catalog.models import Product
+from catalog.models import Product, Version
 from common.views import StyleFormMixin
 
 
@@ -37,3 +37,9 @@ class ProductForm(StyleFormMixin, ModelForm):
                     "Нельзя использовать запрещённые слова"
                 )
         return description
+
+
+class VersionForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Version
+        fields = ('number_version', 'name_version', 'indication_version')
