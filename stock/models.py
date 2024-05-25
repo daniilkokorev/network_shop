@@ -1,9 +1,10 @@
 from django.db import models
 
+from catalog.models import NULLABLE
+
+
 # Create your models here.
 # Создавайте свои модели здесь.
-
-NULLABLE = {"blank": True, "null": True}
 
 
 class Stock(models.Model):
