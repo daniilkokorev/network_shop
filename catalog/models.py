@@ -86,7 +86,7 @@ class Version(models.Model):
         to=Product,
         on_delete=models.CASCADE,
         verbose_name="Продукт",
-        related_name="versions"
+        related_name="version"
     )
     number_version = models.IntegerField(default=1, verbose_name="Номер версии")
     name_version = models.CharField(max_length=150, verbose_name="Название версии")
@@ -97,4 +97,4 @@ class Version(models.Model):
         verbose_name_plural = "Версии"
 
     def __str__(self):
-        return self.name_version
+        return f'{self.name_version}'

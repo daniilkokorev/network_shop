@@ -18,9 +18,9 @@
                             <div class="btn-group">
                                 <a class="btn btn-primary"
                                    href="{% url 'catalogs:product_info' item.pk %}" role="button">Подробнее</a>
-                                {% for status in product.version.all %}
-                                <p> Активная версия:<strong> {{ status.name_version }} </strong></p>
-                                <p> Номер версии:<strong> {{ status.number_version }} </strong></p>
+                                {% for status in item.version.all %}
+                                 <p> Активная версия:<strong> {{ status.name_version }} </strong></p>
+                                <p> Номер верии:<strong> {{ status.number_version }} </strong></p>
                                 {% endfor %}
                             </div>
                         </div>
