@@ -5,6 +5,9 @@ from users.models import User
 
 
 class UserRegisterForm(StyleFormMixin, UserCreationForm):
+    """
+    Форма для регистрации пользователей.
+    """
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2')
