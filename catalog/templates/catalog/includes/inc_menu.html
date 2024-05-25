@@ -3,6 +3,12 @@
     <nav class="ms-5">
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalogs:products_list' %}">Главная</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'stock:stock_list' %}">Акции</a>
+        {% if user.is_authenticated %}
+            <a class="p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выйти</a>
+        {% else %}
+            <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a>
+        {% endif %}
         <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
+
     </nav>
 </div>
