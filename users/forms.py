@@ -15,6 +15,9 @@ class UserRegisterForm(StyleFormMixin, UserCreationForm):
 
 
 class ProfileForm(StyleFormMixin, UserChangeForm):
+    """
+    Форма для редактирования профиля пользователя.
+    """
     class Meta:
         model = User
         fields = ("email", "first_name", "last_name", "phone", "avatar")
