@@ -15,6 +15,8 @@ class User(AbstractUser):
     phone = models.CharField(max_length=35, verbose_name='Телефон')
     country = models.CharField(max_length=50, verbose_name='Страна')
 
+    token = models.CharField(max_length=80, verbose_name='token', **NULLABLE)
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
