@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -7,20 +8,9 @@ from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Version
 
 
-# Create your views here.
-# Создайте свои контроллеры здесь.
-
-
 class ProductListView(ListView):
     """CBV класс-контроллер отображающий список продуктов"""
     model = Product
-
-
-# def index_shop(request):
-#     """ FBV функции-контроллер """
-#     products = Product.objects.all()
-#     context = {"products": products}
-#     return render(request, "catalog/product_list.html", context)
 
 
 class ContactView(TemplateView):
@@ -36,27 +26,12 @@ class ContactView(TemplateView):
         return render(request, self.template_name)
 
 
-# def contact_shop(request):
-#     if request.method == "POST":
-#         name = request.POST.get("name")
-#         phone = request.POST.get("phone")
-#         message = request.POST.get("message")
-#         print(f"{name}, {phone}, {message}")
-#     return render(request, "catalog/contact.html")
-
-
 class ProductDetailView(DetailView):
     """CBV класс-контроллер отображающий информацию о продукте"""
     model = Product
 
 
-# def product_info(request, pk):
-#     """ FBV функции-контроллер """
-#     product = get_object_or_404(Product, pk=pk)
-#     context = {"item": product}
-#     return render(request, "catalog/product_detail.html", context)
-
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     """контроллер добавления продукта"""
     form_class = ProductForm
     model = Product
@@ -75,15 +50,16 @@ class ProductCreateView(CreateView):
         return context_data
 
     def form_valid(self, form):
-        formset = self.get_context_data()['formset']
-        self.object = form.save()
-        if formset.is_valid():
-            formset.instance = self.object
-            formset.save()
-        return super().form_valid(form)
+        if form.is_valid:
+            new_object = form.save(commit=False)
+            new_object.author = self.request.user
+            new_object.save()
+            return super().form_valid(form)
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     """контроллер редактирования продукта"""
     form_class = ProductForm
     model = Product
@@ -113,7 +89,7 @@ class ProductUpdateView(UpdateView):
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     """контроллер удаления продукта"""
     model = Product
     success_url = reverse_lazy("catalog:products_list")

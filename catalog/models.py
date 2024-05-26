@@ -1,7 +1,6 @@
 from django.db import models
 
-# Create your models here.
-# Создавайте свои модели здесь.
+from users.models import User
 
 NULLABLE = {"blank": True, "null": True}
 
@@ -67,6 +66,9 @@ class Product(models.Model):
         default=True,
         verbose_name="Доступен",
         help_text="Укажите, доступен ли продукт",
+    )
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, verbose_name="Создан пользователем", **NULLABLE
     )
 
     def __str__(self):
