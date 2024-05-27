@@ -67,7 +67,7 @@ class Product(models.Model):
         verbose_name="Доступен",
         help_text="Укажите, доступен ли продукт",
     )
-    user = models.ForeignKey(
+    author = models.ForeignKey(
         User, on_delete=models.SET_NULL, verbose_name="Создан пользователем", **NULLABLE
     )
 
