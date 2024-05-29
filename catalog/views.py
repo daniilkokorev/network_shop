@@ -27,9 +27,15 @@ class ContactView(TemplateView):
         return render(request, self.template_name)
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(DetailView, LoginRequiredMixin):
     """CBV класс-контроллер отображающий информацию о продукте"""
     model = Product
+
+    # def get_object(self, queryset=None):
+    #     self.object = super().get_object(queryset)
+    #     if self.request.user == self.object.author:
+    #         return self.object
+    #     raise PermissionDenied
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
