@@ -23,9 +23,11 @@
                         {% endif %}
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="ms-2 btn btn-primary" href="{% url 'catalogs:products_list' %}" role="button">Назад</a>
+                                {% if perms.catalog.can_edit_publish and perms.catalog.can_edit_description and perms.catalog.can_edit_category or user == product.author %}
                                 <a class="ms-2 btn btn-primary"
                                    href="{% url 'catalogs:update_product' object.pk %}" role="button">Изменить</a>
+                                {% endif %}
+                                <a class="ms-2 btn btn-primary" href="{% url 'catalogs:products_list' %}" role="button">Назад</a>
                                 <a class="ms-2 btn btn-primary"
                                    href="{% url 'catalogs:delete_product' object.pk %}" role="button">Удалить</a>
                             </div>
