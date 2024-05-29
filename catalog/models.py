@@ -70,6 +70,10 @@ class Product(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, verbose_name="Создан пользователем", **NULLABLE
     )
+    is_published = models.BooleanField(
+        default=False,
+        verbose_name="Опубликовано"
+    )
 
     def __str__(self):
         return self.name
@@ -78,6 +82,11 @@ class Product(models.Model):
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["name", "category"]
+        permissions = [
+            ("can_edit_publish", "Может изменять публикацию продукта"),
+            ("can_edit_description", "Может изменять описание продукта"),
+            ("can_edit_category", "Может изменять категорию продукта"),
+        ]
 
 
 class Version(models.Model):
