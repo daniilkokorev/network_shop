@@ -6,7 +6,8 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
+from catalog.services import get_category_from_cache
 
 
 class ProductListView(ListView):
@@ -117,3 +118,21 @@ def toggle_activity(request, pk):
     product_item.save()
 
     return redirect(reverse("catalog:product_info", kwargs={"pk": pk}))
+
+
+class CategoryListView(ListView):
+    """CBV класс-контроллер отображающий список категорий"""
+    model = Category
+    success_url = reverse_lazy("catalog:category_list")
+
+    def get_queryset(self):
+        """
+        Метод получает категории из кэша
+        """
+        return get_category_from_cache()
+
+
+class CategoryDetailView(DetailView, LoginRequiredMixin):
+    """CBV класс-контроллер отображающий информацию о категории"""
+    model = Category
+    success_url = reverse_lazy("catalog:category_detail")

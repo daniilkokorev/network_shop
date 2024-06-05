@@ -1,5 +1,4 @@
 from django.forms import ModelForm, ValidationError
-from django.forms.fields import BooleanField
 
 from catalog.models import Product, Version
 from common.views import StyleFormMixin
